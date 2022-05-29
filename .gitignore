@@ -1,2 +1,9 @@
-target
+#Папки не нужны
+tmp/
+.idea/
+out/
+target/
+
+#Файлы не нужны
 *.iml
+
