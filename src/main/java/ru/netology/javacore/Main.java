@@ -8,7 +8,5 @@ public class Main {
         Todos todos = new Todos();
         TodoServer server = new TodoServer(8989, todos);
         server.start();
-
-        System.out.println(todos.getAllTasks());
     }
 }
