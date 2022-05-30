@@ -5,35 +5,32 @@ import java.util.stream.Collectors;
 
 public class Todos {
 
-    private List<String> todoList;
-    public static int counterToDo;
+    private final List<String> todos;
 
     public Todos() {
-        this.todoList = new ArrayList<>();
+        todos = new ArrayList<>();
     }
 
     public void addTask(String task) {
-        if (todoList.contains(task)) {
-            System.out.println("Данная задача уже есть в списке дел");
+        if (todos.contains(task)) {
+            System.out.println(task + " уже есть в списке дел");
         } else {
-            todoList.add(task);
-            System.out.println("Вы запланировали " + (counterToDo < 5 ? " дело " : " дел ") + task);
-            counterToDo++;
+            todos.add(task);
+            System.out.println("Вы запланировали - " + task);
         }
     }
 
     public void removeTask(String task) {
-        if (todoList.contains(task)) {
-            todoList.remove(task);
-            counterToDo--;
-            System.out.println("Вы удалили задачу " + task + " Осталось " + (counterToDo < 5 ? " дел " : " дело "));
+        if (todos.contains(task)) {
+            todos.remove(task);
+            System.out.println("Вы удалили задачу - " + task);
         } else {
-            System.out.println("Данная задача отсутствует в списке дел");
+            System.out.println(task + " отсутствует в списке дел");
         }
     }
 
     public String getAllTasks() {
-        return todoList.stream()
+        return todos.stream()
                 .sorted(Comparator.naturalOrder())
                 .collect(Collectors.joining(" "));
     }
