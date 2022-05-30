@@ -4,18 +4,37 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Todos {
-    //TODO как храним данные
+
+    private List<String> todoList;
+    public static int counterToDo;
+
+    public Todos() {
+        this.todoList = new ArrayList<>();
+    }
 
     public void addTask(String task) {
-        //TODO что проверяем и как добавляем таски
+        if (todoList.contains(task)) {
+            System.out.println("Данная задача уже есть в списке дел");
+        } else {
+            todoList.add(task);
+            System.out.println("Вы запланировали " + (counterToDo < 5 ? " дело " : " дел ") + task);
+            counterToDo++;
+        }
     }
 
     public void removeTask(String task) {
-        //TODO что проверяем и как удаляем таски
+        if (todoList.contains(task)) {
+            todoList.remove(task);
+            counterToDo--;
+            System.out.println("Вы удалили задачу " + task + " Осталось " + (counterToDo < 5 ? " дел " : " дело "));
+        } else {
+            System.out.println("Данная задача отсутствует в списке дел");
+        }
     }
 
     public String getAllTasks() {
-        //TODO выводим список всех тасков по алфавиту (Stream naturalOrder)
+        return todoList.stream()
+                .sorted(Comparator.naturalOrder())
+                .collect(Collectors.joining(" "));
     }
-
 }
