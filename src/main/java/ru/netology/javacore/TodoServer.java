@@ -28,7 +28,7 @@ public class TodoServer {
     }
 
     public void start() {
-        try (ServerSocket serverSocket = new ServerSocket(this.port)) {
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("\nStarting server at " + port);
             while (true) {
                 try (
